@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/stbensonimoh/take-your-drug-reminder-bot/issues"
   },
-  "homepage": "https://github.com/stbensonimoh/take-your-drug-reminder-bot#readme"
+  "homepage": "https://github.com/stbensonimoh/take-your-drug-reminder-bot#readme",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "dotenv": "^8.2.0",
+    "nodemailer": "^6.4.5"
+  }
 }
