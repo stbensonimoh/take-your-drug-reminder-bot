@@ -1,22 +1,11 @@
 'use strict'
 require('dotenv').config()
+const fetch = require('node-fetch')
 
 const nodemailer = require('nodemailer')
 
-const sendMail = async () => {
-  let transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-      user: process.env.EMAIL_USER, // generated ethereal user
-      pass: process.env.EMAIL_PASSWORD  // generated ethereal password
-    }
-  })
-}
-
 const name = 'Bee'
-const phone = '+2348054610438'
+const phone = '+2348054610438, +2348146189986, +2349082859600, +2349022631479'
 const smsMessage = `Hi ${name}! It's time to take your medication. Don't forget that health is wealth.
     xoxo Drug Bot`
 
@@ -200,3 +189,48 @@ const emailMessageHTML = `
   </tbody>
 </table>
  `
+
+const sendEmail = async () => {
+  let transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: process.env.EMAIL_USER, // generated ethereal user
+      pass: process.env.EMAIL_PASSWORD // generated ethereal password
+    }
+  })
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Drug Bot" <benson@stbensonimoh.com>', // sender address
+    to:
+      'june.bankie@gmail.com, johnkellylive@gmail.com, bensonanyanime@gmail.com', // list of receivers
+    subject: `Hey ${name}! Oya time to take ya melecine`, // Subject line
+    text: emailMessageText, // plain text body
+    html: emailMessageHTML, // html body
+    dsn: {
+      id: 'some random message specific id',
+      return: 'headers',
+      notify: 'success',
+      recipient: 'benxenon@gmail.com'
+    }
+  })
+
+  console.log('Message sent: %s', info.messageId)
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+}
+
+const SMSFrom = 'Drug Bot'
+
+const sendSMS = () => {
+  fetch(
+    `https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=${process.env.API}&from=${SMSFrom}&to=${phone}&body=${smsMessage}&dnd=2`
+  )
+    .then(res => res.json())
+    .then(body => console.log(body))
+    .catch(err => console.log(err))
+}
+
+// sendEmail().catch(console.error)
+sendSMS()
