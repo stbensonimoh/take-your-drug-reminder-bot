@@ -1,0 +1,26 @@
+{
+  "name": "take-your-drug-reminder-bot",
+  "version": "1.0.0",
+  "description": "A Javascript Bot that reminds you to take your drug at least 3 times a day.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stbensonimoh/take-your-drug-reminder-bot.git"
+  },
+  "keywords": [
+    "Take",
+    "your",
+    "Drug",
+    "Bot",
+    "Reminder"
+  ],
+  "author": "Benson Imoh,ST",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stbensonimoh/take-your-drug-reminder-bot/issues"
+  },
+  "homepage": "https://github.com/stbensonimoh/take-your-drug-reminder-bot#readme"
+}
