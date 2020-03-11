@@ -190,7 +190,7 @@ const emailMessageHTML = `
 </table>
  `
 
-const sendEmail = async () => {
+module.exports.sendEmail = async () => {
   let transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: 465,
@@ -223,7 +223,7 @@ const sendEmail = async () => {
 
 const SMSFrom = 'Drug Bot'
 
-const sendSMS = () => {
+module.exports.sendSMS = () => {
   fetch(
     `https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=${process.env.API}&from=${SMSFrom}&to=${phone}&body=${smsMessage}&dnd=2`
   )
@@ -233,4 +233,4 @@ const sendSMS = () => {
 }
 
 // sendEmail().catch(console.error)
-sendSMS()
+// sendSMS()
